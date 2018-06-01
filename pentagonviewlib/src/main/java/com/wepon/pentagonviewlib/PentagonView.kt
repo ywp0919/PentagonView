@@ -3,6 +3,8 @@ package com.wepon.pentagonviewlib
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -85,6 +87,7 @@ class PentagonView @JvmOverloads constructor(context: Context, attrs: AttributeS
                 duration = mAnimatorTime
                 interpolator = AccelerateDecelerateInterpolator()
                 addUpdateListener {
+
                     if (this@PentagonView.isAttachedToWindow) {
                         val percent = it.animatedValue as Float
                         data.forEachIndexed { index, dataScore ->
