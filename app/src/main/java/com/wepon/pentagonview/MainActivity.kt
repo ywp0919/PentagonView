@@ -3,7 +3,6 @@ package com.wepon.pentagonview
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.wepon.pentagonview.R.id.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 

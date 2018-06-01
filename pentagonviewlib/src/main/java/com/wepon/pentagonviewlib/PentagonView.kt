@@ -245,6 +245,36 @@ class PentagonView @JvmOverloads constructor(context: Context, attrs: AttributeS
     private var mPath: Path = Path()
 
     /**
+     * 设置一个默认的最小宽高的值。
+     */
+    private val mDefaultWidth = 600
+
+    /**
+     * 计算不同模式下控件大小
+     */
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        setMeasuredDimension(measure(widthMeasureSpec), measure(heightMeasureSpec))
+    }
+
+    /**
+     * 计算大小
+     */
+    private fun measure(origin: Int): Int {
+        val specMode = MeasureSpec.getMode(origin)
+        val specSize = MeasureSpec.getSize(origin)
+        return when (specMode) {
+            // 精确模式
+            MeasureSpec.EXACTLY -> specSize
+            // 最大值模式
+            MeasureSpec.AT_MOST -> Math.min(mDefaultWidth, specSize)
+            // 不指定其大小测量模式
+            MeasureSpec.UNSPECIFIED -> mDefaultWidth
+            else -> mDefaultWidth
+        }
+
+    }
+
+    /**
      * 画画从这里开始
      */
     override fun draw(canvas: Canvas) {
