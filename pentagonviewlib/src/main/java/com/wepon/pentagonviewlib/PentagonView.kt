@@ -201,7 +201,7 @@ class PentagonView @JvmOverloads constructor(context: Context, attrs: AttributeS
     /**
      * 设置数据的动画时长
      */
-    var mAnimatorTime = 2000L
+    var mAnimatorTime = 500L
 
     /**
      * 画环形的画笔
@@ -214,15 +214,6 @@ class PentagonView @JvmOverloads constructor(context: Context, attrs: AttributeS
     }
 
     /**
-     * 画分数多边形的画笔
-     */
-    private var mScoreLinePaint: Paint = Paint().apply {
-        isAntiAlias = true
-        strokeWidth = 4f
-        color = mScoreLineColor
-        style = Paint.Style.FILL_AND_STROKE
-    }
-    /**
      * 画分数多边形边界的线条宽度 px
      */
     var mScoreLineStrokeWidth = 4f
@@ -231,6 +222,17 @@ class PentagonView @JvmOverloads constructor(context: Context, attrs: AttributeS
             mScoreLinePaint.strokeWidth = value
             invalidate()
         }
+
+    /**
+     * 画分数多边形的画笔
+     */
+    private var mScoreLinePaint: Paint = Paint().apply {
+        isAntiAlias = true
+        strokeWidth = mScoreLineStrokeWidth
+        color = mScoreLineColor
+        style = Paint.Style.FILL_AND_STROKE
+    }
+
 
     /**
      * 画文字的画笔
@@ -266,11 +268,11 @@ class PentagonView @JvmOverloads constructor(context: Context, attrs: AttributeS
         val specMode = MeasureSpec.getMode(origin)
         val specSize = MeasureSpec.getSize(origin)
         return when (specMode) {
-            // 精确模式
+        // 精确模式
             MeasureSpec.EXACTLY -> specSize
-            // 最大值模式
+        // 最大值模式
             MeasureSpec.AT_MOST -> Math.min(mDefaultWidth, specSize)
-            // 不指定其大小测量模式
+        // 不指定其大小测量模式
             MeasureSpec.UNSPECIFIED -> mDefaultWidth
             else -> mDefaultWidth
         }
