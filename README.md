@@ -1,6 +1,6 @@
 # PentagonView
 项目里面做的一个五边形能力分数值的View，稍微弄了一下，有什么问题可以提下issues方便改进。
-
+#### 这是一个kotlin的项目，没有写java版本，有需要java版本的可以自己转化一下。。。
 ## 效果图
 ![Mou icon](mdFile/pic_1.png)
 ![Mou icon](mdFile/pic_2.png)
